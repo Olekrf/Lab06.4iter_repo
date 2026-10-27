@@ -1,19 +1,16 @@
 #include <iostream>
 #include <iomanip>
 #include <cmath>
-#include <time.h>
 using namespace std;
 
 void Input(double* a, const int size);
 void Print(double* a, const int size);
 int Countpositive(double* a, const int size);
 int Lastzero (double* a, const int size);
-double Sum (double* a, const int size, int lzero);
+double SumAfterLzero (double* a, const int size, int lzero);
 void Rearrenge (double* a, const int size);
 
 int main() {
-    srand((unsigned)time(NULL));
-
     int n;
     cout << "n = "; cin >> n;
 
@@ -25,12 +22,12 @@ int main() {
     cout << "a: ";
     Print(a, n);
 
-    cout << "Count = " << Countpositive(a, n) << endl;
-   int lzero = Lastzero(a, n);
+    cout << "Count positive = " << Countpositive(a, n) << endl;
+    int lzero = Lastzero(a, n);
     if (lzero == -1)
         cout << "немає елемнтів, рівних нулю" << endl;
     else
-        cout << "Sum = " <<Sum(a, n, lzero) << endl;
+        cout << "Sum after last zero = " <<SumAfterLzero(a, n, lzero) << endl;
 
     Rearrenge(a, n);
     cout << "a: ";
@@ -38,7 +35,6 @@ int main() {
 
     delete[] a;
     return 0;
-
 }
 
 void Input(double* a, const int size)
@@ -70,7 +66,7 @@ int Lastzero (double* a, const int size) {
     }
     return -1;
 }
-double Sum (double* a, const int size, int lzero) {
+double SumAfterLzero (double* a, const int size, int lzero) {
     double s = 0;
     for (int i = lzero + 1; i < size; i++)
         s += a[i];

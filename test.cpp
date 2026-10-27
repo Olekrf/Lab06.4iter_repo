@@ -16,5 +16,5 @@ TEST(LastzeroTest, FindsLastZeroIndex) {
 
 TEST(SumTest, CalculatesSumAfterLastZero) {
     double a[] = {0.0, 1.0, 0.0, 3.0, 2.0};
-    EXPECT_EQ(Sum(a, 5, 2), 5);
+    EXPECT_EQ(SumAfterLzero(a, 5, 2), 5);
 }
